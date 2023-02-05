@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+      <script type="text/javascript" src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+        <script type="text/javascript" src="{{url_for('static',filename='js/applicationform.js')}}"></script>
+
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+</head>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('admin.search') }}">Search</a></li>
+            <li><a href="{{ url_for('admin.applicationform') }}">Registration Form</a></li>
+              <li><a href="{{ url_for('admin.student_table') }}">Students Details</a></li>
+              <li><a href="{{ url_for('admin.fees_table') }}">School Ledger</a></li>
+            {% if not current_user.is_authenticated %}
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<br>
+<br>
+<div class="row panel panel-success" style="margin-top:2%;">
+    {% for item in data %}
+<!--        print ({{item}})-->
+
+            <div class="panel-heading lead">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1"></div>
+                    <div class="col-lg-4 col-md-4"><i class="fa fa-users"></i> View Student Details</div>
+                    <div class="col-lg-2 col-md-2" style="display:block;">
+                        <button type="button" class="btn btn-success delete" style="font-size: large;" value="2"> Delete</button>
+                    </div>
+                    <div class="col-lg-2 col-md-2" style="display:block;">
+                        <button type="button" class="btn btn-success edit" style="font-size: large;" value="1"> Update</button>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-right">
+                        <div class="btn-group text-center" style="display:block;">
+                            <a href="{{ url_for('admin.studentfees')}}?application_id={{item.admission_id}}" class="btn btn-success btn-sm btn-default" style="font-size: large;">Pay Fees<i class="fa fa-edit fa-1x"></i></a>
+<!--                            <a href="student-modify.php?sid=1&amp;id=68" class="btn btn-success btn-sm btn-default">Modify<i class="fa fa-edit fa-1x"></i></a>-->
+<!--                            <a href="student-modify.php?sid=1&amp;id=68" class="btn btn-success btn-sm btn-default">Delete<i class="fa fa-edit fa-1x"></i></a>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">
+
+                                        <span class="text-left">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-responsive img-thumbnail">
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="PhotoOption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog" style="width:30%;height:30%;">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h4 class="modal-title text-success" id="myModalLabel"><i class="fa fa-gear"></i> <span class="text-right">{{item.student_name}}</span></h4>
+                                                        </div>
+                                                        <div class="modal-body">
+    <center><img src="upload/profile_pic/701b4263f7d38604699b7c1f89a3e6a6.jpg" class="img-responsive img-thumbnail"></center>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="upload/upload-view.php?id=68" class="btn btn-success"><i class="fa fa-photo"></i> Upload</a>
+                                                            <a href="upload/upload-view.php?id=68&amp;name=Viddhyut Mall&amp;src=view" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <!-- /.modal -->
+                                    </span>
+
+                                </div>
+                                <div class="col-lg-9 col-md-9">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#Fees" class="text-success"><i class="fa fa-indent"></i> Fees Details</a></li>
+                                        <li><a data-toggle="tab" href="#Summary" class="text-success"><i class="fa fa-home"></i> Summary</a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="Summary" class="tab-pane fade">
+
+                                            <div class="table-responsive col-md-6">
+                                                <table class="table">
+                                                    <tbody>
+
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-user"></i> Full Name</td>
+                                                                <td>{{item.student_name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-list-ol"></i> Application Number</td>
+                                                                <td id="application_id">{{item.admission_id}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-book"></i> Address</td>
+                                                                <td>{{item.address}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
+                                                                <td>{{item.birthday}}</td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Father's Name</td>
+                                                                <td>
+                                                                {{item.father_name}}                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Father's Mobile</td>
+                                                                <td>
+                                                                {{item.father_mobile_number}}                                                                 </td>
+                                                            </tr>
+                                                                                                                                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Mother's Name</td>
+                                                                <td>
+                                                                {{item.mother_name}}                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Mother's Mobile</td>
+                                                                <td>
+                                                                {{item.mother_mobile_number}}                                                                 </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="table-responsive col-md-6">
+                                                <table class="table">
+                                                    <tbody>
+
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-group"></i> Date of Admission</td>
+                                                                <td>{{item.registration_date}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-calendar"></i> Birth Place</td>
+                                                                <td>{{item.state}}</td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Active/Inactive</td>
+                                                                <td>
+                                                                Student is Active                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Last Editing</td>
+                                                                <td>
+                                                                {{item.updated_date}}                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-university"></i> Medical Condition</td>
+                                                                <td>
+                                                                Normal                                                                </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div id="Fees" class="tab-pane fade in active">
+                                            <div class="table-responsive col-md-8">
+                                                <table class="table">
+                                                    <tbody>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-user"></i> Full Name</td>
+                                                                <td>{{item.student_name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-group"></i> Class &amp; Section</td>
+                                                                <td id="class_section">{{item.class_name}}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-medkit"></i> Total Amount</td>
+                                                                <td>{{item.total_amount}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-thumbs-up"></i> Total Amount Paid</td>
+                                                                <td>{{item.total_paid_amount}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-thumbs-up"></i> FEES DETAILS
+                                                                <h2>Balance Amount</h2>
+                                                                 <h3>{{item.balance}}</h3>
+                                                                </td>
+                                                                <td>
+                                                                <table class="table table-bordered" id="feesDetailDataTable">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Description</th>
+                                                                            <th>Amount</th>
+                                                                            <th>Date</th>
+                                                                             <th class=" x0"></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                        {% for x in item.monthly_fees_details %}
+                                                                    <tbody>
+                                                                    <tr id={{x.id}}>
+                                                                        <td>
+                                                                            {{x.description}}
+                                                                        </td>
+                                                                    <td class="row-data">
+                                                                        {{x.amount}}
+                                                                        </td>
+                                                                        <td class="row-data">
+                                                                        {{x.date}}
+                                                                        </td>
+
+                                                                        <td><input class="btn-medium btn-danger remove" type="button" value="X" onclick="show()" /></td>
+
+                                                                        {%endfor%}
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <td></td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="table-responsive col-md-4">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                                <td class="text-success"><i class="fa fa-calendar"></i> Annual Charges</td>
+                                                                <td id="annual_charges">{{item.annual_charges}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-home"></i> Per Month Fees</td>
+                                                                <td id="monthly_fees">{{item.per_month_fees}}</td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td class="text-success"><i class="fa fa-user"></i> Sports Dress</td>
+                                                                <td id="sports_charges">{{item.sports_dress}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-list-ol"></i> Summer Dress</td>
+                                                                <td id="summer_charges">{{item.summer_dress}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-book"></i> Winter Dress</td>
+                                                                <td id="winter_charges">{{item.winter_dress}}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="text-success"><i class="fa fa-calendar"></i> Books Charges</td>
+                                                                <td id="book_charges">{{item.books_charges}}</td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                    </div>
+                                    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" data-id="1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel1">Edit User</h4>
+                </center>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Annual Charges:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="echarges">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Per Month Fees:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="emonthly">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Sports Dress:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="esports">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Summer Dress:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="esummer">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Winter Dress:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="ewinter">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" style="width:150px;">Book Charges:</span>
+                        <input type="text" style="width:350px;" class="form-control" id="ebook">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <button type="button" class="btn btn-success submit_btn" value=""> Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <!-- /.table-responsive -->
+
+            </div>
+    {% endfor %}
+        </div>
+
+<script>
+
+ function show() {
+     if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+            const rowid = {rowid: event.target.parentNode.parentNode.id};
+
+                           $.ajax({
+                url: '/tables/delete_fees_details',
+                dataSrc: 'data',
+                type: 'POST',
+                dataType: 'json',
+                data: rowid,
+                success: function(data){
+                    location.reload();
+
+                }
+            });
+
+
+
+            }
+
+$(document).ready(function() {
+
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+
+	$(document).on('click', '.delete', function() {
+
+	    const obj = {user_application_id: $('#application_id').text()};
+	    $.ajax({
+	    url: '/tables/inactive_student_details',
+	    dataSrc: 'data',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: obj,
+	    success: function(data){
+	    window.location = "student_table"
+	    }
+	});
+
+	});
+
+
+    $(document).on('click', '.edit', function() {
+
+        var application_id = $('#application_id').text();
+        var class_section = $('#class_section').text();
+        var annual_charges = $('#annual_charges').text();
+        var monthly_fees = $('#monthly_fees').text();
+        var sports_charges = $('#sports_charges').text();
+        var summer_charges = $('#summer_charges').text();
+        var winter_charges = $('#winter_charges').text();
+        var book_charges = $('#book_charges').text();
+
+        $('#edit').modal('show');
+        $('#echarges').val(annual_charges);
+        $('#emonthly').val(monthly_fees);
+        $('#esports').val(sports_charges);
+        $('#esummer').val(summer_charges);
+        $('#ewinter').val(winter_charges);
+        $('#ebook').val(book_charges);
+        $('.submit_btn').click(function(){
+
+
+            const obj = {user_application_id: application_id,
+            user_annual_charges: $('#echarges').val(), user_monthly_fees: $('#emonthly').val(),
+            user_sports_charges: $('#esports').val(),user_summer_charges: $('#esummer').val(),
+            user_winter_charges: $('#ewinter').val(),user_book_charges: $('#ebook').val()};
+            console.log(obj);
+            $.ajax({
+                url: '/tables/update_student_details',
+                dataSrc: 'data',
+                type: 'POST',
+                dataType: 'json',
+                data: obj,
+                success: function(data){
+                    location.reload();
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+        });
+    });
+});
+</script>
+
+</html>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About Us | Shiksha Valley Public School </title>
-	<link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+  <title>Principal's Desk | Shiksha Valley Public School </title>
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="{{url_for('static',filename='js/jquery.js')}}"></script>
-
   <!--Start of jQuery plugin mmenu for sliding mmenu-->
-    <script type="text/javascript" src="{{url_for('static',filename='jQuery.mmenu-master/dist/js/jquery.mmenu.all.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='jQuery.mmenu-master/dist/js/jquery.mmenu.all.min.js')}}"></script>
 
     <script type="text/javascript" src="{{url_for('static',filename='jQuery.mmenu-master/dist/js/jquery.mmenu.autoheight.min.js')}}"></script>
     <link href="{{url_for('static',filename='jQuery.mmenu-master/dist/css/jquery.mmenu.all.css')}}" rel="stylesheet" type="text/css">
@@ -41,20 +40,20 @@
     top:0;
     display: block;
   }
-  #description{
-    margin-top: 30px;
+  #principal{
+    margin-top: 60px;
   }
-  </style> 
+  </style>  
 </head>
 <body>
-      <nav id="menu">
+<nav id="menu">
          <ul>
             <li><a class="movecloseright">&#10006 </a></li>
             <li><a href="{{ url_for('main.index')}}"><b><span class="glyphicon glyphicon-home"></span></b>&nbsp &nbsp &nbsp &nbsp HOME</a></li>
             <li><a href="{{ url_for('main.about')}}"><b><span class="glyphicon glyphicon-user"></span></b>&nbsp &nbsp &nbsp &nbsp ABOUT </a></li>
             <li><a href="{{ url_for('main.news')}}"><b><span class="glyphicon glyphicon-list-alt"></span></b>&nbsp &nbsp &nbsp &nbsp NEWS & EVENTS </a></li>
              <li><a href="{{ url_for('auth.login')}}"><b><span class="glyphicon glyphicon-list-alt"></span></b>&nbsp &nbsp &nbsp &nbsp LOGIN </a></li>
-            <li><a href="{{ url_for('main.downloads')}}"><b><span class="glyphicon glyphicon-download"></span></b>&nbsp &nbsp &nbsp &nbsp DOWNLOADS</a></li>
+             <li><a href="{{ url_for('main.downloads')}}"><b><span class="glyphicon glyphicon-download"></span></b>&nbsp &nbsp &nbsp &nbsp DOWNLOADS</a></li>
             <li><a href="/contact"><b><span class="glyphicon glyphicon-phone-alt"></span></b>&nbsp &nbsp &nbsp &nbsp CONTACT</a></li>
             <li><a href="{{ url_for('main.contact')}}"><b><span class="glyphicon glyphicon-globe"></span></b>&nbsp &nbsp &nbsp &nbsp CONNECT</a></li>
             <li><a href="{{ url_for('main.index')}}"><b><span class="glyphicon glyphicon-remove-circle"></span></b>&nbsp &nbsp &nbsp &nbsp CLOSE</a></li>
@@ -80,34 +79,22 @@
       </div>
     </div>
   </div>
-	
-	<div id="description" class="container">
-		<div class="row">
-			<div class="col-sm-12">   <!--About Us-->
-				<div class="col-md-12 title hidden-sm hidden-xs"><a href="">ABOUT US<span class="underline"></span></a></div>
-        <div class="col-xs-12 title  hidden-md hidden-lg "><a href="">ABOUT US<span class="underline"></span></a></div>
-				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 hidden-sm hidden-xs content">
-          Shiksha Valley Public School, Delhi, is an English Medium School for boys and girls, registered under the Societies Registration Act XXI of 1860 No. S-512 of 1951-52.
-					It is open to children of all communities with a special responsibility for the underpriviledged children. This school is recognized by the Directorate of Education, Haryana State and affiliated to the Central Board of Secondary Education ( Affiliation No. 530210 and School Code No. 4231).<br>The aim of this School is to provide an all round formation of students and to impart sound education by inculcating healthy study habits, discipline, self-reliance and moral values. The school also aims at forming students of quality to be leaders in all walks of life and serve their fellow human beings in Justice, Truth and Love. Special attention is given to develop the students’ personality, initiative, originality and sense of national integration through co-curricular activities, individually and in groups. Great importance is given to a high standard of morality and discipline. <br> It is an age-old convention for organizations and institutions like schools and colleges to have their own specific motto which distinguishes them from one another. The motto of a school not only makes transparent the institution’s selfidentity but also delineates its spirituality and the noble causes it espouses. This motto is invariably inscribed within the emblem of the school which has its distinctive thrust and significance that students are expected to imbibe. <br>This School has its own motto inscribed on the top and bottom of the emblem. The two Latin expressions, Quis ut Deus and Fortes in Fide. respectively mean “who is like God” and “strength in faith”. <br>The emblem of the School enshrines the following symbols, namely, the shield, the cross, the balance and the sword. The SHIELD stands for victory. The CROSS stands for sacrifice. The BALANCE stands for justice. The SWORD stands for strength.
-       </div>
-       <div class="col-xs-12 hidden-md hidden-lg hidden-xl content">
-          Shiksha Valley Public School, Delhi, is an English Medium School for boys and girls, registered under the Societies Registration Act XXI of 1860 No. S-512 of 1951-52.<br>
-          It is open to children of all communities with a special responsibility for the unnderpriviledged children. This school is recognized by the Directorate of Education, Haryana State and affiliated to the Central Board of Secondary Education ( Affiliation No. 530210 and School Code No. 4231).<br>The aim of this School is to provide an all round formation of students and to impart sound education by inculcating healthy study habits, discipline, self-reliance and moral values. The school also aims at forming students of quality to be leaders in all walks of life and serve their fellow human beings in Justice, Truth and Love. Special attention is given to develop the students’ personality, initiative, originality and sense of national integration through co-curricular activities, individually and in groups. Great importance is given to a high standard of morality and discipline. <br> It is an age-old convention for organizations and institutions like schools and colleges to have their own specific motto which distinguishes them from one another. The motto of a school not only makes transparent the institution’s selfidentity but also delineates its spirituality and the noble causes it espouses. This motto is invariably inscribed within the emblem of the school which has its distinctive thrust and significance that students are expected to imbibe. <br>This School has its own motto inscribed on the top and bottom of the emblem. The two Latin expressions, Quis ut Deus and Fortes in Fide. respectively mean “who is like God” and “strength in faith”. <br>The emblem of the School enshrines the following symbols, namely, the shield, the cross, the balance and the sword. The SHIELD stands for victory. The CROSS stands for sacrifice. The BALANCE stands for justice. The SWORD stands for strength.
-       </div>
-			</div>  
-		</div>
-	</div>
-<!--
-	<div id="stylepara" class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><div class="parallax-window" data-parallax="scroll" data-image-src="images/StMichael-2.jpg"></div></div>       
-		</div>
-	</div>
--->                <!--Paralax image style & Message-->
 
-	
-	
-  <div id="footer">
+	 <div id="principal" class="container">
+    <div class="row">
+      <div class="col-sm-12 hidden-xs title"><a href="">PRINCIPAL'S DESK<span class="underline"></span></a></div>
+      <div class="col-xs-12 hidden-sm hidden-md hidden-lg title"><a href="">PRINCIPAL'S DESK<span class="underline"></span></a></div>
+      <div class="col-sm-12">
+        <div class="col-sm-12 col-xs-12 "><img  src="static/images/twelve2.jpg" class="img-responsive img-thumbnail"></div>
+        <div class="col-sm-12 col-xs-12  content">Dear Friends<br> Greetings to all<br>Welcome to Shiksha Valley Public School, Delhi. I am happy to accompany you in the Educational Journey through the various departments, activities, scholastic and non scholastic life of our children who are entrusted to us by the parents. Our methodology of education is not to produce little academic monsters, dehumanized, nor is it to produce pious faithful, allergic to the world they live in, incapable of responding to it sympathetically; but rather to produce balanced, serene, and constant individuals  open to whatever  is human; men and women of right principles; men and women open to the signs of the times, in tune with their cultural milieu and its problems; and above all men and women for others. Unfortunately, in today’s society children’s minds and hearts are being silently and gradually destroyed in the mindless race for reaching the top in the shortest time. Learning dissociated from the inculcation of virtues and values will produce only a hybrid of intellectual giants and moral dwarves. The value system which the school professes is incorporated in the regular curriculum in order to build up right attitude towards self, towards others, society and towards different cultures.<br>This objective is expressed through various activities of the school. Bringing out the best in every child occupies a prime position in our school education. The children are trained to be men and women with human as well as spiritual values to lead their lives. The children are motivated and moulded to become beacons shedding light all around. They learn to be good human beings with a positive attitude towards life, to have respect for honesty, integrity and commitment to others. They are made to realize that they are very important and all their actions affect the society and vice versa. This creates a sense of responsibility among the students. All these help the children to identify and appreciate the uniqueness in every one, thus enabling everyone to stand among the crowd as independent, respected individuals.<br>
+        The role of parents is an essential factor in shaping the future of the children. The cooperation of the parents with the school management, and the staff will go a long way to make our children genuine human beings.<br>I wish all our students and the parents, and all the staff members, both the teaching and the non teaching, God’s blessings.<br>Sr. Vipul Gupta
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+	 <div id="footer">
     <div  class="container">
     <div class="row">
         <div class="col-sm-4">
@@ -141,5 +128,5 @@
   </div>
   </div>
     <script type="text/javascript" src="{{url_for('static',filename='js/bottomscript.js')}}"></script>
-   </body>
+</body>
 </html>
